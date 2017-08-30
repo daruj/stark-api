@@ -14,7 +14,11 @@
     "prod": "cross-env NODE_ENV=production nodemon -i \"*.test.js\" -r dotenv-safe/config .",
     "lint": "eslint src",
     "docs": "apidoc -i src -o docs && apidoc-markdown -p docs -o DOCS.md",
-    "postdocs": "opn docs/index.html"
+    "postdocs": "opn docs/index.html",
+    "copy": "copy package.json dist",
+    "build": "npm run clean && npm run copy && npm run transpile",
+    "clean": "rm -rf dist",
+    "transpile": "babel src -d dist/src -s inline -i 'src/**/*.test.js'"
   },
   "jest": {
     "testEnvironment": "node",
