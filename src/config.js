@@ -23,8 +23,8 @@ const config = {
   all: {
     env: process.env.NODE_ENV || 'development',
     root: path.join(__dirname, '..'),
-    port: process.env.PORT || 8000,
-    ip: process.env.IP || 'localhost',
+    port: process.env.PORT || 9000,
+    ip: process.env.IP || '0.0.0.0',
     masterKey: requireProcessEnv('MASTER_KEY'),
     jwtSecret: requireProcessEnv('JWT_SECRET'),
     mongo: {
@@ -44,6 +44,8 @@ const config = {
     }
   },
   development: {
+    port: process.env.PORT || 8000,
+    ip: process.env.IP || 'localhost',
     mongo: {
       uri: 'mongodb://localhost/stark-api-dev',
       options: {
