@@ -7,6 +7,12 @@
 	- [Authenticate with Facebook](#authenticate-with-facebook)
 	- [Authenticate with Google](#authenticate-with-google)
 	
+- [Expenses](#expenses)
+	- [Create expenses](#create-expenses)
+	- [Delete expenses](#delete-expenses)
+	- [Retrieve expenses](#retrieve-expenses)
+	- [Update expenses](#update-expenses)
+	
 - [User](#user)
 	- [Create user](#create-user)
 	- [Delete user](#delete-user)
@@ -63,6 +69,66 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>Google user accessToken.</p>							|
+
+# Expenses
+
+## Create expenses
+
+
+
+	POST /expenses
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>master access token.</p>							|
+| description			| 			|  <p>Expenses's description.</p>							|
+| amount			| 			|  <p>Expenses's amount.</p>							|
+| user_id			| 			|  <p>Expenses's user_id.</p>							|
+
+## Delete expenses
+
+
+
+	DELETE /expenses/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>master access token.</p>							|
+
+## Retrieve expenses
+
+
+
+	GET /expenses/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>master access token.</p>							|
+
+## Update expenses
+
+
+
+	PUT /expenses/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>master access token.</p>							|
+| description			| 			|  <p>Expenses's description.</p>							|
+| amount			| 			|  <p>Expenses's amount.</p>							|
+| user_id			| 			|  <p>Expenses's user_id.</p>							|
 
 # User
 
