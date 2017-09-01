@@ -13,6 +13,12 @@
 	- [Retrieve expenses](#retrieve-expenses)
 	- [Update expenses](#update-expenses)
 	
+- [Incomes](#incomes)
+	- [Create incomes](#create-incomes)
+	- [Delete incomes](#delete-incomes)
+	- [Retrieve incomes](#retrieve-incomes)
+	- [Update incomes](#update-incomes)
+	
 - [User](#user)
 	- [Create user](#create-user)
 	- [Delete user](#delete-user)
@@ -83,10 +89,9 @@
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>master access token.</p>							|
+| access_token			| String			|  <p>user access token.</p>							|
 | description			| 			|  <p>Expenses's description.</p>							|
 | amount			| 			|  <p>Expenses's amount.</p>							|
-| user_id			| 			|  <p>Expenses's user_id.</p>							|
 
 ## Delete expenses
 
@@ -99,20 +104,25 @@
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>master access token.</p>							|
+| access_token			| String			|  <p>user access token.</p>							|
 
 ## Retrieve expenses
 
 
 
-	GET /expenses/:id
+	GET /expenses
 
 
 ### Parameters
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>master access token.</p>							|
+| access_token			| String			|  <p>user access token.</p>							|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
 
 ## Update expenses
 
@@ -125,10 +135,67 @@
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>master access token.</p>							|
+| access_token			| String			|  <p>user access token.</p>							|
 | description			| 			|  <p>Expenses's description.</p>							|
 | amount			| 			|  <p>Expenses's amount.</p>							|
-| user_id			| 			|  <p>Expenses's user_id.</p>							|
+
+# Incomes
+
+## Create incomes
+
+
+
+	POST /incomes
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| description			| 			|  <p>Incomes's description.</p>							|
+| amount			| 			|  <p>Incomes's amount.</p>							|
+
+## Delete incomes
+
+
+
+	DELETE /incomes/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Retrieve incomes
+
+
+
+	GET /incomes/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Update incomes
+
+
+
+	PUT /incomes/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| description			| 			|  <p>Incomes's description.</p>							|
+| amount			| 			|  <p>Incomes's amount.</p>							|
 
 # User
 

@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 
-const expensesSchema = new Schema({
+const incomesSchema = new Schema({
   user: {
     type: Schema.ObjectId,
     ref: 'User',
@@ -18,7 +18,7 @@ const expensesSchema = new Schema({
   timestamps: true
 })
 
-expensesSchema.methods = {
+incomesSchema.methods = {
   view (full) {
     const view = {
       // simple view
@@ -37,7 +37,7 @@ expensesSchema.methods = {
   }
 }
 
-const model = mongoose.model('Expenses', expensesSchema)
+const model = mongoose.model('Incomes', incomesSchema)
 
 export const schema = model.schema
 export default model
