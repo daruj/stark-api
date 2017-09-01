@@ -7,6 +7,13 @@
 	- [Authenticate with Facebook](#authenticate-with-facebook)
 	- [Authenticate with Google](#authenticate-with-google)
 	
+- [Balance](#balance)
+	- [Create balance](#create-balance)
+	- [Delete balance](#delete-balance)
+	- [Retrieve balance](#retrieve-balance)
+	- [Retrieve balances](#retrieve-balances)
+	- [Update balance](#update-balance)
+	
 - [Expenses](#expenses)
 	- [Create expenses](#create-expenses)
 	- [Delete expenses](#delete-expenses)
@@ -76,6 +83,84 @@
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>Google user accessToken.</p>							|
 
+# Balance
+
+## Create balance
+
+
+
+	POST /balance
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| amount			| 			|  <p>Balance's amount.</p>							|
+| type			| 			|  <p>Balance's type.</p>							|
+| description			| 			|  <p>Balance's description.</p>							|
+
+## Delete balance
+
+
+
+	DELETE /balance/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Retrieve balance
+
+
+
+	GET /balance/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Retrieve balances
+
+
+
+	GET /balance
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
+## Update balance
+
+
+
+	PUT /balance/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| amount			| 			|  <p>Balance's amount.</p>							|
+| type			| 			|  <p>Balance's type.</p>							|
+| description			| 			|  <p>Balance's description.</p>							|
+
 # Expenses
 
 ## Create expenses
@@ -110,7 +195,7 @@
 
 
 
-	GET /expenses
+	GET /expenses/:id
 
 
 ### Parameters
@@ -118,11 +203,6 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>user access token.</p>							|
-| q			| String			| **optional** <p>Query to search.</p>							|
-| page			| Number			| **optional** <p>Page number.</p>							|
-| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
-| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
-| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
 
 ## Update expenses
 
