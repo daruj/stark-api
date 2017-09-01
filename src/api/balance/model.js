@@ -1,30 +1,39 @@
 import mongoose, { Schema } from 'mongoose'
 
-const expensesSchema = new Schema({
+const types = ['income', 'expense']
+
+const balanceSchema = new Schema({
   user: {
     type: Schema.ObjectId,
     ref: 'User',
     required: true
   },
-  description: {
-    type: String,
-    required: true
-  },
   amount: {
     type: Number,
+    required: true
+  },
+  type: {
+    type: String,
+    enum: types,
+    required: true
+  },
+  description: {
+    type: String,
     required: true
   }
 }, {
   timestamps: true
 })
 
-expensesSchema.methods = {
+balanceSchema.methods = {
   view (full) {
     const view = {
       // simple view
       id: this.id,
-      description: this.description,
+      user: this.user.view(full),
       amount: this.amount,
+      type: this.type,
+      description: this.description,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     }
@@ -36,7 +45,7 @@ expensesSchema.methods = {
   }
 }
 
-const model = mongoose.model('Expenses', expensesSchema)
+const model = mongoose.model('Balance', balanceSchema)
 
 export const schema = model.schema
 export default model
