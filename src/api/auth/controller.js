@@ -3,6 +3,12 @@ import { success } from '../../services/response/'
 
 export const login = ({ user }, res, next) =>
   sign(user.id)
-    .then((token) => ({ token, user: user.view(true) }))
+    .then((token) => ({
+      token,
+      user: user.view(true),
+      init: {
+        timestamp: +new Date()
+      }
+    }))
     .then(success(res, 201))
     .catch(next)
