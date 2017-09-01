@@ -15,9 +15,9 @@ const { amount, type, description } = schema.tree
  * @apiGroup Balance
  * @apiPermission user
  * @apiParam {String} access_token user access token.
- * @apiParam amount Balance's amount.
- * @apiParam type Balance's type.
- * @apiParam description Balance's description.
+ * @apiParam {Number} amount Balance's amount.
+ * @apiParam {String="income","expense"} type Balance's type.
+ * @apiParam {String} description Balance's description.
  * @apiSuccess {Object} balance Balance's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Balance not found.
@@ -65,9 +65,9 @@ router.get('/:id',
  * @apiGroup Balance
  * @apiPermission user
  * @apiParam {String} access_token user access token.
- * @apiParam amount Balance's amount.
- * @apiParam type Balance's type.
- * @apiParam description Balance's description.
+ * @apiParam {Number} amount Balance's amount.
+ * @apiParam {String="income","expense"} type Balance's type.
+ * @apiParam {String} description Balance's description.
  * @apiSuccess {Object} balance Balance's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Balance not found.

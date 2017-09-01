@@ -97,9 +97,9 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>user access token.</p>							|
-| amount			| 			|  <p>Balance's amount.</p>							|
-| type			| 			|  <p>Balance's type.</p>							|
-| description			| 			|  <p>Balance's description.</p>							|
+| amount			| Number			|  <p>Balance's amount.</p>							|
+| type			| String			|  <p>Balance's type.</p>							|
+| description			| String			|  <p>Balance's description.</p>							|
 
 ## Delete balance
 
@@ -157,9 +157,9 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>user access token.</p>							|
-| amount			| 			|  <p>Balance's amount.</p>							|
-| type			| 			|  <p>Balance's type.</p>							|
-| description			| 			|  <p>Balance's description.</p>							|
+| amount			| Number			|  <p>Balance's amount.</p>							|
+| type			| String			|  <p>Balance's type.</p>							|
+| description			| String			|  <p>Balance's description.</p>							|
 
 # Expenses
 
