@@ -8,8 +8,8 @@ export const create = ({ user, bodymen: { body } }, res, next) =>
     .then(success(res, 201))
     .catch(next)
 
-export const index = ({ querymen: { query, select, cursor } }, res, next) =>
-  Balance.find(query, select, cursor)
+export const index = ({ querymen: { query, select, cursor }, user }, res, next) =>
+  Balance.find({ ...query, user: user._id }, select, cursor)
     .populate('user')
     .then((balances) => balances.map((balance) => balance.view()))
     .then(success(res))
