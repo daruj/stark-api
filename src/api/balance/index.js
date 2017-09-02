@@ -41,7 +41,12 @@ router.post('/',
  */
 router.get('/',
   token({ required: true }),
-  query(),
+  query({
+    q: {
+      type: String,
+      paths: ['type']
+    }
+  }),
   index)
 
 /**
