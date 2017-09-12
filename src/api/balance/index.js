@@ -7,7 +7,7 @@ import { schema } from './model'
 export Balance, { schema } from './model'
 
 const router = new Router()
-const { amount, type, description } = schema.tree
+const { amount, type, description, location } = schema.tree
 
 /**
  * @api {post} /balance Create balance
@@ -18,6 +18,7 @@ const { amount, type, description } = schema.tree
  * @apiParam {Number} amount Balance's amount.
  * @apiParam {String="income","expense"} type Balance's type.
  * @apiParam {String} description Balance's description.
+ * @apiParam {Object} location location with { lat, lgn, address }.
  * @apiSuccess {Object} balance Balance's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Balance not found.
@@ -25,7 +26,7 @@ const { amount, type, description } = schema.tree
  */
 router.post('/',
   token({ required: true }),
-  body({ amount, type, description }),
+  body({ amount, type, description, location }),
   create)
 
 /**
@@ -73,6 +74,7 @@ router.get('/:id',
  * @apiParam {Number} amount Balance's amount.
  * @apiParam {String="income","expense"} type Balance's type.
  * @apiParam {String} description Balance's description.
+ * @apiParam {Object} location location with { lat, lgn, address }.
  * @apiSuccess {Object} balance Balance's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Balance not found.
@@ -80,7 +82,7 @@ router.get('/:id',
  */
 router.put('/:id',
   token({ required: true }),
-  body({ amount, type, description }),
+  body({ amount, type, description, location }),
   update)
 
 /**

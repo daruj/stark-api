@@ -20,6 +20,17 @@ const balanceSchema = new Schema({
   description: {
     type: String,
     required: true
+  },
+  location: {
+    lat: {
+      type: Number
+    },
+    lng: {
+      type: Number
+    },
+    address: {
+      type: String
+    }
   }
 }, {
   timestamps: true
@@ -30,10 +41,10 @@ balanceSchema.methods = {
     const view = {
       // simple view
       id: this.id,
-      user: this.user.view(full),
       amount: this.amount,
       type: this.type,
       description: this.description,
+      location: this.location,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     }
@@ -44,6 +55,12 @@ balanceSchema.methods = {
     } : view
   }
 }
+
+balanceSchema.pre('validate', (req, res, next) => {
+  console.log('this gets printed first', res)
+  // req.body.location = JSON.parse(req.body.location)
+  next()
+})
 
 const model = mongoose.model('Balance', balanceSchema)
 

@@ -3,7 +3,7 @@ import { success, notFound, authorOrAdmin } from '../../services/response/'
 import { Balance } from '.'
 
 export const create = ({ user, bodymen: { body } }, res, next) =>
-  Balance.create({ ...body, user })
+  Balance.create({ ...body, location: JSON.parse(body.location), user })
     .then((balance) => balance.view(true))
     .then(success(res, 201))
     .catch(next)
