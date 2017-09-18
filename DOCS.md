@@ -14,18 +14,6 @@
 	- [Retrieve balances](#retrieve-balances)
 	- [Update balance](#update-balance)
 	
-- [Expenses](#expenses)
-	- [Create expenses](#create-expenses)
-	- [Delete expenses](#delete-expenses)
-	- [Retrieve expenses](#retrieve-expenses)
-	- [Update expenses](#update-expenses)
-	
-- [Incomes](#incomes)
-	- [Create incomes](#create-incomes)
-	- [Delete incomes](#delete-incomes)
-	- [Retrieve incomes](#retrieve-incomes)
-	- [Update incomes](#update-incomes)
-	
 - [User](#user)
 	- [Create user](#create-user)
 	- [Delete user](#delete-user)
@@ -91,15 +79,20 @@
 
 	POST /balance
 
+### Headers
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| Authorization			| String			|  <p>authorization value.</p>							|
 
 ### Parameters
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>user access token.</p>							|
 | amount			| Number			|  <p>Balance's amount.</p>							|
 | type			| String			|  <p>Balance's type.</p>							|
 | description			| String			|  <p>Balance's description.</p>							|
+| location			| Object			|  <p>location with { lat, lgn, address }.</p>							|
 
 ## Delete balance
 
@@ -107,12 +100,11 @@
 
 	DELETE /balance/:id
 
-
-### Parameters
+### Headers
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>user access token.</p>							|
+| Authorization			| String			|  <p>authorization value.</p>							|
 
 ## Retrieve balance
 
@@ -120,12 +112,11 @@
 
 	GET /balance/:id
 
-
-### Parameters
+### Headers
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>user access token.</p>							|
+| Authorization			| String			|  <p>authorization value.</p>							|
 
 ## Retrieve balances
 
@@ -133,12 +124,16 @@
 
 	GET /balance
 
+### Headers
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| Authorization			| String			|  <p>authorization value.</p>							|
 
 ### Parameters
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>user access token.</p>							|
 | q			| String			| **optional** <p>Query to search.</p>							|
 | page			| Number			| **optional** <p>Page number.</p>							|
 | limit			| Number			| **optional** <p>Amount of returned items.</p>							|
@@ -151,131 +146,20 @@
 
 	PUT /balance/:id
 
+### Headers
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| Authorization			| String			|  <p>authorization value.</p>							|
 
 ### Parameters
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>user access token.</p>							|
 | amount			| Number			|  <p>Balance's amount.</p>							|
 | type			| String			|  <p>Balance's type.</p>							|
 | description			| String			|  <p>Balance's description.</p>							|
-
-# Expenses
-
-## Create expenses
-
-
-
-	POST /expenses
-
-
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>user access token.</p>							|
-| description			| 			|  <p>Expenses's description.</p>							|
-| amount			| 			|  <p>Expenses's amount.</p>							|
-
-## Delete expenses
-
-
-
-	DELETE /expenses/:id
-
-
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>user access token.</p>							|
-
-## Retrieve expenses
-
-
-
-	GET /expenses/:id
-
-
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>user access token.</p>							|
-
-## Update expenses
-
-
-
-	PUT /expenses/:id
-
-
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>user access token.</p>							|
-| description			| 			|  <p>Expenses's description.</p>							|
-| amount			| 			|  <p>Expenses's amount.</p>							|
-
-# Incomes
-
-## Create incomes
-
-
-
-	POST /incomes
-
-
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>user access token.</p>							|
-| description			| 			|  <p>Incomes's description.</p>							|
-| amount			| 			|  <p>Incomes's amount.</p>							|
-
-## Delete incomes
-
-
-
-	DELETE /incomes/:id
-
-
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>user access token.</p>							|
-
-## Retrieve incomes
-
-
-
-	GET /incomes/:id
-
-
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>user access token.</p>							|
-
-## Update incomes
-
-
-
-	PUT /incomes/:id
-
-
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>user access token.</p>							|
-| description			| 			|  <p>Incomes's description.</p>							|
-| amount			| 			|  <p>Incomes's amount.</p>							|
+| location			| Object			|  <p>location with { lat, lgn, address }.</p>							|
 
 # User
 
@@ -285,12 +169,16 @@
 
 	POST /users
 
+### Headers
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| Authorization			| String			|  <p>authorization value.</p>							|
 
 ### Parameters
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>Master access_token.</p>							|
 | email			| String			|  <p>User's email.</p>							|
 | password			| String			|  <p>User's password.</p>							|
 | name			| String			| **optional** <p>User's name.</p>							|
@@ -303,12 +191,11 @@
 
 	DELETE /users/:id
 
-
-### Parameters
+### Headers
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>User access_token.</p>							|
+| Authorization			| String			|  <p>authorization value.</p>							|
 
 ## Retrieve current user
 
@@ -316,12 +203,11 @@
 
 	GET /users/me
 
-
-### Parameters
+### Headers
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>User access_token.</p>							|
+| Authorization			| String			|  <p>authorization value.</p>							|
 
 ## Retrieve user
 
@@ -336,12 +222,16 @@
 
 	GET /users
 
+### Headers
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| Authorization			| String			|  <p>authorization value.</p>							|
 
 ### Parameters
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>User access_token.</p>							|
 | q			| String			| **optional** <p>Query to search.</p>							|
 | page			| Number			| **optional** <p>Page number.</p>							|
 | limit			| Number			| **optional** <p>Amount of returned items.</p>							|
@@ -372,12 +262,16 @@
 
 	PUT /users/:id
 
+### Headers
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| Authorization			| String			|  <p>authorization value.</p>							|
 
 ### Parameters
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>User access_token.</p>							|
 | name			| String			| **optional** <p>User's name.</p>							|
 | picture			| String			| **optional** <p>User's picture.</p>							|
 

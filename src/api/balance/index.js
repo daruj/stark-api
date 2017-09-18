@@ -14,11 +14,11 @@ const { amount, type, description, location } = schema.tree
  * @apiName CreateBalance
  * @apiGroup Balance
  * @apiPermission user
- * @apiParam {String} access_token user access token.
  * @apiParam {Number} amount Balance's amount.
  * @apiParam {String="income","expense"} type Balance's type.
  * @apiParam {String} description Balance's description.
  * @apiParam {Object} location location with { lat, lgn, address }.
+ * @apiHeader {String} Authorization authorization value.
  * @apiSuccess {Object} balance Balance's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Balance not found.
@@ -34,7 +34,7 @@ router.post('/',
  * @apiName RetrieveBalances
  * @apiGroup Balance
  * @apiPermission user
- * @apiParam {String} access_token user access token.
+ * @apiHeader {String} Authorization authorization value.
  * @apiUse listParams
  * @apiSuccess {Object[]} balances List of balances.
  * @apiError {Object} 400 Some parameters may contain invalid values.
@@ -55,7 +55,7 @@ router.get('/',
  * @apiName RetrieveBalance
  * @apiGroup Balance
  * @apiPermission user
- * @apiParam {String} access_token user access token.
+ * @apiHeader {String} Authorization authorization value.
  * @apiSuccess {Object} balance Balance's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Balance not found.
@@ -70,11 +70,11 @@ router.get('/:id',
  * @apiName UpdateBalance
  * @apiGroup Balance
  * @apiPermission user
- * @apiParam {String} access_token user access token.
  * @apiParam {Number} amount Balance's amount.
  * @apiParam {String="income","expense"} type Balance's type.
  * @apiParam {String} description Balance's description.
  * @apiParam {Object} location location with { lat, lgn, address }.
+ * @apiHeader {String} Authorization authorization value.
  * @apiSuccess {Object} balance Balance's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Balance not found.
@@ -90,7 +90,7 @@ router.put('/:id',
  * @apiName DeleteBalance
  * @apiGroup Balance
  * @apiPermission user
- * @apiParam {String} access_token user access token.
+ * @apiHeader {String} Authorization authorization value.
  * @apiSuccess (Success 204) 204 No Content.
  * @apiError 404 Balance not found.
  * @apiError 401 user access only.

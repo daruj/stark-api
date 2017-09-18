@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { middleware as query } from 'querymen'
 import { middleware as body } from 'bodymen'
-import { password as passwordAuth, master, token } from '../../services/passport'
+import { password as passwordAuth, token } from '../../services/passport'
 import { index, showMe, show, create, update, updatePassword, destroy } from './controller'
 import { schema } from './model'
 export User, { schema } from './model'
@@ -13,15 +13,15 @@ const { email, password, name, picture, role } = schema.tree
  * @api {get} /users Retrieve users
  * @apiName RetrieveUsers
  * @apiGroup User
- * @apiPermission admin
- * @apiParam {String} access_token User access_token.
+ * @apiPermission user
+ * @apiHeader {String} Authorization authorization value.
  * @apiUse listParams
  * @apiSuccess {Object[]} users List of users.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 401 Admin access only.
  */
 router.get('/',
-  token({ required: true, roles: ['admin'] }),
+  token({ required: true }),
   query(),
   index)
 
@@ -30,7 +30,7 @@ router.get('/',
  * @apiName RetrieveCurrentUser
  * @apiGroup User
  * @apiPermission user
- * @apiParam {String} access_token User access_token.
+ * @apiHeader {String} Authorization authorization value.
  * @apiSuccess {Object} user User's data.
  */
 router.get('/me',
@@ -53,19 +53,19 @@ router.get('/:id',
  * @apiName CreateUser
  * @apiGroup User
  * @apiPermission master
- * @apiParam {String} access_token Master access_token.
  * @apiParam {String} email User's email.
  * @apiParam {String{6..}} password User's password.
  * @apiParam {String} [name] User's name.
  * @apiParam {String} [picture] User's picture.
  * @apiParam {String=user,admin} [role=user] User's picture.
+ * @apiHeader {String} Authorization authorization value.
  * @apiSuccess (Sucess 201) {Object} user User's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 401 Master access only.
  * @apiError 409 Email already registered.
  */
 router.post('/',
-  master(),
+  token({ required: false }),
   body({ email, password, name, picture, role }),
   create)
 
@@ -74,9 +74,9 @@ router.post('/',
  * @apiName UpdateUser
  * @apiGroup User
  * @apiPermission user
- * @apiParam {String} access_token User access_token.
  * @apiParam {String} [name] User's name.
  * @apiParam {String} [picture] User's picture.
+ * @apiHeader {String} Authorization authorization value.
  * @apiSuccess {Object} user User's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 401 Current user or admin access only.
@@ -107,8 +107,8 @@ router.put('/:id/password',
  * @api {delete} /users/:id Delete user
  * @apiName DeleteUser
  * @apiGroup User
- * @apiPermission admin
- * @apiParam {String} access_token User access_token.
+ * @apiPermission user
+ * @apiHeader {String} Authorization authorization value.
  * @apiSuccess (Success 204) 204 No Content.
  * @apiError 401 Admin access only.
  * @apiError 404 User not found.
