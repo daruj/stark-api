@@ -2,11 +2,18 @@ import _ from 'lodash'
 import { success, notFound, authorOrAdmin } from '../../services/response/'
 import { Balance } from '.'
 
-export const create = ({ user, bodymen: { body } }, res, next) =>
-  Balance.create({ ...body, location: JSON.parse(body.location), user })
+export const create = ({ user, bodymen: { body } }, res, next) => {
+  let data
+  if (body.location) {
+    data = { ...body, location: JSON.parse(body.location), user }
+  } else {
+    data = { ...body, user }
+  }
+  Balance.create(data)
     .then((balance) => balance.view(true))
     .then(success(res, 201))
     .catch(next)
+}
 
 export const index = ({ querymen: { query, select, cursor }, user }, res, next) =>
   Balance.find({ ...query, user: user._id }, select, cursor)
