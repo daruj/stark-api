@@ -27,9 +27,6 @@ const balanceSchema = new Schema({
     },
     lng: {
       type: Number
-    },
-    address: {
-      type: String
     }
   }
 }, {

@@ -17,7 +17,7 @@ const { amount, type, description, location } = schema.tree
  * @apiParam {Number} amount Balance's amount.
  * @apiParam {String="income","expense"} type Balance's type.
  * @apiParam {String} description Balance's description.
- * @apiParam {Object} location location with { lat, lgn, address }.
+ * @apiParam {Object} location location with { lat, lgn }.
  * @apiHeader {String} Authorization authorization value.
  * @apiSuccess {Object} balance Balance's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
